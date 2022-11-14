@@ -8,7 +8,7 @@ void gamestate::render(sf::RenderWindow* window) {
 
 }
 
-void gamestate::handleEvents(sf::Event) {
+void gamestate::handleEvents(sf::Event event) {
 
 }
 
@@ -16,23 +16,15 @@ void gamestate::handleEvents(sf::Event) {
  * Functions to objects/UI elements in the state
  ***********************************************
  */
-void menustate::initializeUI() {
+void gamestate::initializeUI() {
 
-    //Error occured
-    throw exception;
 }
-void menustate::initializePlayerPaddle() {
+void gamestate::initializePlayerPaddle() {
 
-    //Error occured
-    throw exception;
 }
-void menustate::initializeAIPaddle() {
+void gamestate::initializeAIPaddle() {
 
-    //Error occured
-    throw exception;
 }
-void menustate::initializeBall() {
+void gamestate::initializeBall() {
 
-    //Error occured
-    throw exception;
 }

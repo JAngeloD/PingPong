@@ -9,7 +9,7 @@ class pausestate : public state
         virtual ~pausestate();
 
         void render(sf::RenderWindow* window) override;
-        void handleEvents(sf::Event) override;
+        void handleEvents(sf::Event event) override;
 
     private:
         void initializeResumeButton();

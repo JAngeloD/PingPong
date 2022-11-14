@@ -8,17 +8,26 @@
 
 #include "string.h"
 #include "state.h"
+#include "gamestate.h"
+#include "menustate.h"
+#include "pausestate.h"
 
 class engine
 {
     public:
-        engine();
+        engine(); //Initialzes the window and every state.
         virtual ~engine();
 
-        void render();
-
+        void render(); //Starts the game play loop
         sf::RenderWindow* window;
-        state* currentState;
+
+    private:
+        state* currentState; //Stores pointer to the current state
+
+        //States of the game
+        menustate menu;
+        pausestate pause;
+        gamestate game;
 };
 
 #endif // ENGINE_H

@@ -1,7 +1,8 @@
 # depslib dependency file v1.0
-1668050397 source:d:\programming\pingpong\src\main.cpp
+1668143561 source:d:\programming\pingpong\src\main.cpp
 	"main.h"
 	<SFML/Graphics.hpp>
+	"engine.h"
 
 1668050358 d:\programming\pingpong\include\main.h
 
@@ -413,4 +414,43 @@
 	<SFML/Graphics/PrimitiveType.hpp>
 	<SFML/Graphics/Drawable.hpp>
 	<SFML/Window/GlResource.hpp>
+
+1668400294 d:\programming\pingpong\include\engine.h
+	<SFML/Graphics.hpp>
+	<stack>
+	<iostream>
+	<stdlib.h>
+	"string.h"
+	"state.h"
+	"gamestate.h"
+	"menustate.h"
+	"pausestate.h"
+
+1668400871 d:\programming\pingpong\include\state.h
+	<SFML/Graphics.hpp>
+	<iostream>
+
+1668400871 d:\programming\pingpong\include\gamestate.h
+	"state.h"
+
+1668400871 d:\programming\pingpong\include\menustate.h
+	"state.h"
+
+1668400871 d:\programming\pingpong\include\pausestate.h
+	"state.h"
+
+1668400871 source:d:\programming\pingpong\src\gamestate.cpp
+	"gamestate.h"
+
+1668400871 source:d:\programming\pingpong\src\state.cpp
+	"state.h"
+
+1668400871 source:d:\programming\pingpong\src\menustate.cpp
+	"menustate.h"
+
+1668400829 source:d:\programming\pingpong\src\engine.cpp
+	"engine.h"
+
+1668400877 source:d:\programming\pingpong\src\pausestate.cpp
+	"pausestate.h"
 

@@ -17,7 +17,7 @@ void pausestate::render(sf::RenderWindow* window) {
 
 }
 
-void pausestate::handleEvents(sf::Event) {
+void pausestate::handleEvents(sf::Event event) {
 
 }
 
@@ -26,13 +26,9 @@ void pausestate::handleEvents(sf::Event) {
  * Functions to objects/UI elements in the state
  ***********************************************
  */
-void menustate::initializeResumeButton() {
+void pausestate::initializeResumeButton() {
 
-    //Error occured
-    throw exception;
 }
-void menustate::initializeQuitButton() {
+void pausestate::initializeQuitButton() {
 
-    //Error occured
-    throw exception;
 }

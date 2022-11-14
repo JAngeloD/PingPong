@@ -4,7 +4,7 @@ engine::engine() {
     window = new sf::RenderWindow(sf::VideoMode(800, 600), "SFML works!");
     window->setVerticalSyncEnabled(true);
 
-    currentState = &state1;
+    currentState = &game;
 }
 
 engine::~engine() {
@@ -21,19 +21,7 @@ void engine::render() {
             if (event.type == sf::Event::Closed) {
                 window->close();
             }
-            else if(event.type == sf::Event::KeyPressed) {
-                if (event.key.code == sf::Keyboard::Space) {
-                    if(currentState == &state1) {
-
-                        currentState = &state2;
-                    }
-                    else {
-                        currentState = &state1;
-                    }
-                }
-                currentState->handleEvents(window);
-            }
-
+            currentState->handleEvents(event);
         }
         window->clear();
         currentState->render(window);

@@ -5,10 +5,11 @@
 class menustate : public state
 {
     public:
+        menustate();
         virtual ~menustate();
 
         void render(sf::RenderWindow* window) override;
-        void handleEvents(sf::RenderWindow* window) override;
+        void handleEvents(sf::Event event) override;
 
     private:
         void initializePlayButton();

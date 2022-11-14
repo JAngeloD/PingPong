@@ -17,7 +17,7 @@ void menustate::render(sf::RenderWindow* window) {
 
 }
 
-void menustate::handleEvents(sf::Event) {
+void menustate::handleEvents(sf::Event event) {
 
 }
 
@@ -27,11 +27,7 @@ void menustate::handleEvents(sf::Event) {
  */
 void menustate::initializePlayButton() {
 
-    //Error occured
-    throw exception;
 }
 void menustate::initializeExitButton() {
 
-    //Error occured
-    throw exception;
 }
