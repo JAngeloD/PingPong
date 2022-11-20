@@ -11,6 +11,7 @@ class state
 
         virtual void render(sf::RenderWindow* window);
         virtual void handleEvents(sf::Event event);
+        virtual void update();
 };
 
 #endif // STATE_H

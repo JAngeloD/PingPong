@@ -2,6 +2,8 @@
 #define GAMESTATE_H
 
 #include "state.h"
+#include "paddle.h"
+
 class gamestate : public state
 {
     public:
@@ -10,12 +12,11 @@ class gamestate : public state
 
         void render(sf::RenderWindow* window) override;
         void handleEvents(sf::Event event) override;
+        void update() override;
 
     private:
-        void initializeUI();
-        void initializePlayerPaddle();
-        void initializeAIPaddle();
-        void initializeBall();
+        paddle cpuPlayer;
+        paddle player;
 };
 
 #endif // GAMESTATE_H
