@@ -17,6 +17,16 @@ class gamestate : public state
     private:
         paddle cpuPlayer;
         paddle player;
+
+        std::pair<sf::Vector2f, sf::Vector2f> topBoundary;
+        std::pair<sf::Vector2f, sf::Vector2f> bottomBoundary;
+        std::pair<sf::Vector2f, sf::Vector2f> playerPaddleBoundary;
+        std::pair<sf::Vector2f, sf::Vector2f> cpuPlayerPaddleBoundary;
+
+        std::vector<std::pair<sf::Vector2f, sf::Vector2f>> playerBoundaries;
+        std::vector<std::pair<sf::Vector2f, sf::Vector2f>> cpuBoundaries;
+        std::vector<std::pair<sf::Vector2f, sf::Vector2f>> ballBoundaries;
+
 };
 
 #endif // GAMESTATE_H

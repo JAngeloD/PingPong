@@ -1,7 +1,8 @@
 #include "engine.h"
 
 engine::engine() {
-    window = new sf::RenderWindow(sf::VideoMode(800, 600), "SFML works!");
+    res = sf::Vector2f(800, 600);
+    window = new sf::RenderWindow(sf::VideoMode(res.x, res.y), "SFML works!");
     window->setVerticalSyncEnabled(true);
 
     currentState = &game;

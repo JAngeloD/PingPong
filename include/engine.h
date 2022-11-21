@@ -2,11 +2,7 @@
 #define ENGINE_H
 
 #include <SFML/Graphics.hpp>
-#include <stack>
-#include <iostream>
-#include <stdlib.h>
 
-#include "string.h"
 #include "state.h"
 #include "gamestate.h"
 #include "menustate.h"
@@ -18,6 +14,8 @@ class engine
         engine(); //Initialzes the window and every state.
         virtual ~engine();
 
+        sf::Vector2f getResolution() {return res;}
+
         void render(); //Starts the game play loop
         sf::RenderWindow* window;
 
@@ -25,9 +23,11 @@ class engine
         state* currentState; //Stores pointer to the current state
 
         //States of the game
+        gamestate game;
         menustate menu;
         pausestate pause;
-        gamestate game;
+
+        sf::Vector2f res;
 };
 
 #endif // ENGINE_H

@@ -13,12 +13,24 @@ gamestate::gamestate() {
     cpuPlayer.getSprite()->setTexture(*cpuPlayer.getTexture());
 
     //Initializes object starting positions (refactor to be dynamic)
-    player.move(0.0f, 300.0f - 42.0f);
-    cpuPlayer.move(800.0f - 15.0f, 300.0f - 42.0f);
+    player.setPosition(0.0f, 300.0f - 42.0f);
+    cpuPlayer.setPosition(800.0f - 15.0f, 300.0f - 42.0f);
+
+    //Initializes object boundaries
+    topBoundary = std::make_pair(sf::Vector2f(0,0), sf::Vector2f(800, 0));
+    bottomBoundary = std::make_pair(sf::Vector2f(0,600), sf::Vector2f(800,0));
+    playerPaddleBoundary = player.getBoundary();
+    cpuPlayerPaddleBoundary = cpuPlayer.getBoundary();
+
+    //Packages and assigns Boundaries to the objects
+    playerBoundaries = {topBoundary, bottomBoundary};
+    cpuBoundaries = {topBoundary, bottomBoundary};
+    player.setBoundary(&playerBoundaries);
+    cpuPlayer.setBoundary(&cpuBoundaries);
+
 }
 
-gamestate::~gamestate() {
-}
+gamestate::~gamestate() {}
 
 void gamestate::render(sf::RenderWindow* window) {
     update();
@@ -42,12 +54,21 @@ void gamestate::handleEvents(sf::Event event) {
     else if (event.type == sf::Event::MouseButtonPressed) {
 
     }
+
+
 }
 
 void gamestate::update() {
     //player paddle movement updates
-    if (player.up) {player.move(0.0f, -2.0f);}
-    if (player.down) {player.move(0.0f, 2.0f);}
-
-
+    if (player.up) {
+        player.move(0.0f, -2.0f);
+        playerPaddleBoundary = player.getBoundary();
+    }
+    if (player.down) {
+        player.move(0.0f, 2.0f);
+        playerPaddleBoundary = player.getBoundary();
+    }
 }
+
+
+

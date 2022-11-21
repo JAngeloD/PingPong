@@ -415,12 +415,8 @@
 	<SFML/Graphics/Drawable.hpp>
 	<SFML/Window/GlResource.hpp>
 
-1668400294 d:\programming\pingpong\include\engine.h
+1668999986 d:\programming\pingpong\include\engine.h
 	<SFML/Graphics.hpp>
-	<stack>
-	<iostream>
-	<stdlib.h>
-	"string.h"
 	"state.h"
 	"gamestate.h"
 	"menustate.h"
@@ -430,7 +426,7 @@
 	<SFML/Graphics.hpp>
 	<iostream>
 
-1668982161 d:\programming\pingpong\include\gamestate.h
+1669011993 d:\programming\pingpong\include\gamestate.h
 	"state.h"
 	"paddle.h"
 
@@ -440,7 +436,7 @@
 1668400871 d:\programming\pingpong\include\pausestate.h
 	"state.h"
 
-1668980915 source:d:\programming\pingpong\src\gamestate.cpp
+1669009731 source:d:\programming\pingpong\src\gamestate.cpp
 	"gamestate.h"
 	"paddle.h"
 
@@ -450,7 +446,7 @@
 1668400871 source:d:\programming\pingpong\src\menustate.cpp
 	"menustate.h"
 
-1668975176 source:d:\programming\pingpong\src\engine.cpp
+1668996715 source:d:\programming\pingpong\src\engine.cpp
 	"engine.h"
 
 1668400877 source:d:\programming\pingpong\src\pausestate.cpp
@@ -462,8 +458,10 @@
 1668972916 d:\programming\pingpong\include\paddle.h
 	"object.h"
 
-1668981030 d:\programming\pingpong\include\object.h
+1669012250 d:\programming\pingpong\include\object.h
 	<SFML/Graphics.hpp>
+	<vector>
+	<iostream>
 
 1668972963 source:d:\programming\pingpong\src\object.cpp
 	"object.h"
