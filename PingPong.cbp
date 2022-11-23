@@ -28,6 +28,7 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="include/ball.h" />
 		<Unit filename="include/engine.h" />
 		<Unit filename="include/gamestate.h" />
 		<Unit filename="include/main.h" />
@@ -36,6 +37,7 @@
 		<Unit filename="include/paddle.h" />
 		<Unit filename="include/pausestate.h" />
 		<Unit filename="include/state.h" />
+		<Unit filename="src/ball.cpp" />
 		<Unit filename="src/engine.cpp" />
 		<Unit filename="src/gamestate.cpp" />
 		<Unit filename="src/main.cpp" />

@@ -23,7 +23,7 @@ class object
             return std::make_pair(vertex1, vertex2);
         }
 
-        void move(float x, float y) {
+        virtual void move(float x, float y) {
             //Checks if object is outside of boundary before moving
             for(std::pair<sf::Vector2f, sf::Vector2f> vertex : *boundaries) {
                 if ((x + getXPosition() >= vertex.first.x && x + getXPosition() <= vertex.first.x + vertex.second.x &&
