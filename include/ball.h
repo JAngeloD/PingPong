@@ -2,6 +2,7 @@
 #define BALL_H
 
 #include "object.h"
+#include <algorithm>
 
 class ball : public object
 {
@@ -9,17 +10,9 @@ class ball : public object
         ball();
         virtual ~ball();
 
-        void setVelocity(float x, float y) {
-            xVelocity = x;
-            yVelocity = y;
-        }
-
-        void moveBall();
+        void hasCollided() override;
 
     private:
-
-        float xVelocity;
-        float yVelocity;
 };
 
 #endif // BALL_H

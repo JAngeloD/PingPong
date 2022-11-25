@@ -12,10 +12,16 @@ class object
 
         sf::Texture* getTexture() {return& texture;}
         sf::Sprite* getSprite() {return& sprite;}
+
         float getXPosition() {return sprite.getPosition().x;}
         float getYPosition() {return sprite.getPosition().y;}
         float getWidth() {return texture.getSize().x;}
         float getHeight() {return texture.getSize().y;}
+
+        void setVelocity(float x, float y) {
+            xVelocity = x;
+            yVelocity = y;
+        }
 
         std::pair<sf::Vector2f, sf::Vector2f> getBoundary() {
             sf::Vector2f vertex1(sprite.getPosition().x, sprite.getPosition().y);
@@ -23,18 +29,32 @@ class object
             return std::make_pair(vertex1, vertex2);
         }
 
-        virtual void move(float x, float y) {
+        virtual void hasCollided(){
             //Checks if object is outside of boundary before moving
             for(std::pair<sf::Vector2f, sf::Vector2f> vertex : *boundaries) {
-                if ((x + getXPosition() >= vertex.first.x && x + getXPosition() <= vertex.first.x + vertex.second.x &&
-                    y + getYPosition() >= vertex.first.y && y + getYPosition() <= vertex.first.y + vertex.second.y) ||
-                    (x + getXPosition() + getWidth() >= vertex.first.x && x + getXPosition() + getWidth() <= vertex.first.x + vertex.second.x &&
-                    y + getYPosition() + getHeight() >= vertex.first.y && y + getYPosition() + getHeight() <= vertex.first.y + vertex.second.y)) {
-                    return;
+                /// Instantiates
+                float thisObjectLowX = getXPosition() + xVelocity;
+                float thisObjectHighX = thisObjectLowX + getWidth() + xVelocity;
+                float thisObjectLowY = getYPosition() + yVelocity;
+                float thisObjectHighY = thisObjectLowY + getHeight() + yVelocity;
+
+                float boundaryLowX = vertex.first.x;
+                float boundaryHighX = boundaryLowX + vertex.second.x;
+                float boundaryLowY = vertex.first.y;
+                float boundaryHighY = boundaryLowY + vertex.second.y;
+
+                bool xCollision = ((thisObjectHighX - boundaryLowX) > 0) && ((boundaryHighX - thisObjectLowX) > 0);
+                bool yCollision = ((thisObjectHighY - boundaryLowY) > 0) && ((boundaryHighY - thisObjectLowY) > 0);
+
+                if (xCollision && yCollision) {
+                    setVelocity(0,0);
                 }
             }
+        }
 
-            sf::Vector2f pos(x, y);
+        void move() {
+            hasCollided();
+            sf::Vector2f pos(xVelocity, yVelocity);
             sprite.move(pos);
         }
 
@@ -44,9 +64,7 @@ class object
             sprite.setPosition(pos);
         }
 
-        void setBoundary(std::vector<std::pair<sf::Vector2f, sf::Vector2f>>* bList) {
-            boundaries = bList;
-        }
+        void setBoundary(std::vector<std::pair<sf::Vector2f, sf::Vector2f>>* bList) {boundaries = bList;}
 
         //Current bool movement of the object
         bool up = false;
@@ -55,11 +73,15 @@ class object
         bool right = false;
 
     protected:
+        //Holds the textures
         sf::Texture texture;
         sf::Sprite sprite;
 
         //Boundary where the object cannot pass through
         std::vector<std::pair<sf::Vector2f, sf::Vector2f>>* boundaries;
+
+        float xVelocity;
+        float yVelocity;
 };
 
 #endif // OBJECT_H

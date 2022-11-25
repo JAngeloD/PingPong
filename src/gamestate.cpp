@@ -16,14 +16,19 @@ gamestate::gamestate() {
     cpuPlayer.getSprite()->setTexture(*cpuPlayer.getTexture());
     pongBall.getSprite()->setTexture(*pongBall.getTexture());
 
-    //Initializes object starting positions (refactor to be dynamic)
+    //Initializes object starting position
+    //TODO:  (refactor to be dynamic)
     player.setPosition(0.0f, 300.0f - 42.0f);
     cpuPlayer.setPosition(800.0f - 15.0f, 300.0f - 42.0f);
-    pongBall.setPosition(400.0f - 7.0f, 300.0f - 7.0f);
+    pongBall.setPosition(15.0f, 500.0f - 7.0f);
 
     //Initializes object boundaries
-    topBoundary = std::make_pair(sf::Vector2f(0,0), sf::Vector2f(800, 0));
-    bottomBoundary = std::make_pair(sf::Vector2f(0,600), sf::Vector2f(800,0));
+    //TODO:  (refactor to be dynamic)
+    topBoundary = std::make_pair(sf::Vector2f(-1,-100), sf::Vector2f(800, 100));
+    bottomBoundary = std::make_pair(sf::Vector2f(-1,600), sf::Vector2f(800,200));
+    rightBoundary = std::make_pair(sf::Vector2f(800, -1), sf::Vector2f(400, 600));
+    leftBoundary = std::make_pair(sf::Vector2f(800, -100), sf::Vector2f(10, 100));
+
     playerPaddleBoundary = player.getBoundary();
     cpuPlayerPaddleBoundary = cpuPlayer.getBoundary();
     pongBallBoundary = pongBall.getBoundary();
@@ -31,13 +36,13 @@ gamestate::gamestate() {
     //Packages and assigns Boundaries to the objects
     playerBoundaries = {topBoundary, bottomBoundary};
     cpuBoundaries = {topBoundary, bottomBoundary};
-    ballBoundaries = {topBoundary, bottomBoundary, playerPaddleBoundary, cpuPlayerPaddleBoundary};
+    ballBoundaries = {topBoundary, bottomBoundary, rightBoundary, playerPaddleBoundary, cpuPlayerPaddleBoundary};
     player.setBoundary(&playerBoundaries);
     cpuPlayer.setBoundary(&cpuBoundaries);
     pongBall.setBoundary(&ballBoundaries);
 
     //Initializes starting velocity of the pong ball
-    pongBall.setVelocity(-2.0f, 1.5f);
+    pongBall.setVelocity(0.0f, -1.5f);
 }
 
 gamestate::~gamestate() {}
@@ -69,16 +74,27 @@ void gamestate::handleEvents(sf::Event event) {
 
 void gamestate::update() {
     //player paddle movement updates
+    //TODO:  (refactor to be dynamic)
+    player.setVelocity(0.0f, 0.0f);
     if (player.up) {
-        player.move(0.0f, -2.0f);
+        player.setVelocity(0.0f, -2.0f);
         playerPaddleBoundary = player.getBoundary();
     }
     if (player.down) {
-        player.move(0.0f, 2.0f);
+        player.setVelocity(0.0f, 2.0f);
         playerPaddleBoundary = player.getBoundary();
     }
 
-    pongBall.moveBall();
+    //Updates boundaries
+    playerBoundaries = {topBoundary, bottomBoundary};
+    cpuBoundaries = {topBoundary, bottomBoundary};
+    ballBoundaries = {topBoundary, bottomBoundary, rightBoundary, playerPaddleBoundary, cpuPlayerPaddleBoundary};
+    player.setBoundary(&playerBoundaries);
+    cpuPlayer.setBoundary(&cpuBoundaries);
+    pongBall.setBoundary(&ballBoundaries);
+
+    player.move();
+    pongBall.move();
 }
 
 
