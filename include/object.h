@@ -17,6 +17,8 @@ class object
         float getYPosition() {return sprite.getPosition().y;}
         float getWidth() {return texture.getSize().x;}
         float getHeight() {return texture.getSize().y;}
+        float getXVelocity() {return xVelocity;}
+        float getYVelocity() {return yVelocity;}
 
         void setVelocity(float x, float y) {
             xVelocity = x;

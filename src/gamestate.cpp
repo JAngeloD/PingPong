@@ -20,7 +20,7 @@ gamestate::gamestate() {
     //TODO:  (refactor to be dynamic)
     player.setPosition(0.0f, 300.0f - 42.0f);
     cpuPlayer.setPosition(800.0f - 15.0f, 300.0f - 42.0f);
-    pongBall.setPosition(14.0f, 500.0f - 7.0f);
+    pongBall.setPosition(400.0f - 7.0f, 300.0f - 7.0f);
 
     //Initializes object boundaries
     //TODO:  (refactor to be dynamic)
@@ -36,13 +36,13 @@ gamestate::gamestate() {
     //Packages and assigns Boundaries to the objects
     playerBoundaries = {topBoundary, bottomBoundary};
     cpuBoundaries = {topBoundary, bottomBoundary};
-    ballBoundaries = {topBoundary, bottomBoundary, rightBoundary, playerPaddleBoundary, cpuPlayerPaddleBoundary};
+    ballBoundaries = {topBoundary, bottomBoundary, playerPaddleBoundary, cpuPlayerPaddleBoundary};
     player.setBoundary(&playerBoundaries);
     cpuPlayer.setBoundary(&cpuBoundaries);
     pongBall.setBoundary(&ballBoundaries);
 
     //Initializes starting velocity of the pong ball
-    pongBall.setVelocity(0.0f, -1.2f);
+    pongBall.startVelocity();
 }
 
 gamestate::~gamestate() {}
@@ -85,16 +85,29 @@ void gamestate::update() {
         playerPaddleBoundary = player.getBoundary();
     }
 
+    //cpu paddle movement updates
+    //TODO:  super basic movement for testing purposes
+    float cpuVelocity = pongBall.getYVelocity();
+    if (pongBall.getYPosition() &&
+        ) {
+
+    }
+    if(pongBall.getXVelocity() >= 0) {cpuPlayer.setVelocity(0.0f, cpuVelocity);}
+    cpuPlayerPaddleBoundary = cpuPlayer.getBoundary();
+
+
     //Updates boundaries
     playerBoundaries = {topBoundary, bottomBoundary};
     cpuBoundaries = {topBoundary, bottomBoundary};
-    ballBoundaries = {topBoundary, bottomBoundary, rightBoundary, playerPaddleBoundary, cpuPlayerPaddleBoundary};
+    ballBoundaries = {topBoundary, bottomBoundary, playerPaddleBoundary, cpuPlayerPaddleBoundary};
     player.setBoundary(&playerBoundaries);
     cpuPlayer.setBoundary(&cpuBoundaries);
     pongBall.setBoundary(&ballBoundaries);
 
+
     pongBall.move();
     player.move();
+    cpuPlayer.move();
 }
 
 

@@ -1,6 +1,7 @@
 #ifndef GAMESTATE_H
 #define GAMESTATE_H
 
+#include <math.h>
 #include "state.h"
 #include "paddle.h"
 #include "ball.h"

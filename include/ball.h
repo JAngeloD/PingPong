@@ -11,6 +11,7 @@ class ball : public object
         virtual ~ball();
 
         void hasCollided() override;
+        void startVelocity();
 
     private:
 };

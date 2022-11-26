@@ -9,8 +9,6 @@ class paddle : public object
         paddle();
         virtual ~paddle();
 
-
-
     private:
 };
 

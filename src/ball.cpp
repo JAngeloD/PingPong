@@ -37,3 +37,7 @@ void ball::hasCollided() {
         }
     }
 }
+
+void ball::startVelocity() {
+    setVelocity(2.0f, -2.0f); //temp
+}
