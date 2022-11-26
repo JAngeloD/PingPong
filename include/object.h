@@ -25,10 +25,12 @@ class object
 
         std::pair<sf::Vector2f, sf::Vector2f> getBoundary() {
             sf::Vector2f vertex1(sprite.getPosition().x, sprite.getPosition().y);
-            sf::Vector2f vertex2(texture.getSize().x, texture.getSize().y);
+            sf::Vector2f vertex2(texture.getSize().x + xVelocity, texture.getSize().y + yVelocity);
             return std::make_pair(vertex1, vertex2);
         }
 
+        //Has big limitations interacting with a boundary that is contantly moving.
+        //Refactor needed to remove issue
         virtual void hasCollided(){
             //Checks if object is outside of boundary before moving
             for(std::pair<sf::Vector2f, sf::Vector2f> vertex : *boundaries) {

@@ -20,7 +20,7 @@ gamestate::gamestate() {
     //TODO:  (refactor to be dynamic)
     player.setPosition(0.0f, 300.0f - 42.0f);
     cpuPlayer.setPosition(800.0f - 15.0f, 300.0f - 42.0f);
-    pongBall.setPosition(15.0f, 500.0f - 7.0f);
+    pongBall.setPosition(14.0f, 500.0f - 7.0f);
 
     //Initializes object boundaries
     //TODO:  (refactor to be dynamic)
@@ -42,7 +42,7 @@ gamestate::gamestate() {
     pongBall.setBoundary(&ballBoundaries);
 
     //Initializes starting velocity of the pong ball
-    pongBall.setVelocity(0.0f, -1.5f);
+    pongBall.setVelocity(0.0f, -1.2f);
 }
 
 gamestate::~gamestate() {}
@@ -93,8 +93,8 @@ void gamestate::update() {
     cpuPlayer.setBoundary(&cpuBoundaries);
     pongBall.setBoundary(&ballBoundaries);
 
-    player.move();
     pongBall.move();
+    player.move();
 }
 
 

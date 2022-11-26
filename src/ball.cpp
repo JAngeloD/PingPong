@@ -5,7 +5,6 @@ ball::~ball() {}
 
 void ball::hasCollided() {
     //Checks if object is outside of boundary before moving
-    //Checks if object is outside of boundary before moving
     for(std::pair<sf::Vector2f, sf::Vector2f> vertex : *boundaries) {
         /// Instantiates
         float thisObjectLowX = getXPosition() + xVelocity;

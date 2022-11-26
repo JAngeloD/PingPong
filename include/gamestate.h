@@ -25,6 +25,7 @@ class gamestate : public state
         std::pair<sf::Vector2f, sf::Vector2f> bottomBoundary;
         std::pair<sf::Vector2f, sf::Vector2f> rightBoundary;
         std::pair<sf::Vector2f, sf::Vector2f> leftBoundary;
+
         std::pair<sf::Vector2f, sf::Vector2f> playerPaddleBoundary;
         std::pair<sf::Vector2f, sf::Vector2f> cpuPlayerPaddleBoundary;
         std::pair<sf::Vector2f, sf::Vector2f> pongBallBoundary;
