@@ -4,6 +4,7 @@
 #include <SFML/Graphics.hpp>
 
 #include "state.h"
+#include "startstate.h"
 #include "gamestate.h"
 #include "pausestate.h"
 
@@ -18,10 +19,17 @@ class engine
         void render(); //Starts the game play loop
         sf::RenderWindow* window;
 
+
+        static constexpr int GAMESTATEID = 0;
+        static constexpr int PAUSESTATEID = 1;
+        static constexpr int STARTSTATEID = 2;
+        static const int xRes = 800;
+        static const int yRes = 600;
     private:
         state* currentState; //Stores pointer to the current state
 
         //States of the game
+        startstate start;
         gamestate game;
         pausestate pause;
 

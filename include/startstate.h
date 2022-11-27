@@ -1,14 +1,14 @@
-#ifndef PAUSESTATE_H
-#define PAUSESTATE_H
+#ifndef STARTSTATE_H
+#define STARTSTATE_H
 
 #include "state.h"
 
 class engine;
-class pausestate : public state
+class startstate : public state
 {
     public:
-        pausestate();
-        virtual ~pausestate();
+        startstate();
+        virtual ~startstate();
 
         void render(sf::RenderWindow* window) override;
         int handleEvents(sf::Event event) override;
@@ -18,4 +18,4 @@ class pausestate : public state
         sf::Text text;
 };
 
-#endif // PAUSESTATE_H
+#endif // STARTSTATE_H

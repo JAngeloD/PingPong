@@ -35,6 +35,7 @@
 		<Unit filename="include/object.h" />
 		<Unit filename="include/paddle.h" />
 		<Unit filename="include/pausestate.h" />
+		<Unit filename="include/startstate.h" />
 		<Unit filename="include/state.h" />
 		<Unit filename="src/ball.cpp" />
 		<Unit filename="src/engine.cpp" />
@@ -43,6 +44,7 @@
 		<Unit filename="src/object.cpp" />
 		<Unit filename="src/paddle.cpp" />
 		<Unit filename="src/pausestate.cpp" />
+		<Unit filename="src/startstate.cpp" />
 		<Unit filename="src/state.cpp" />
 		<Extensions />
 	</Project>

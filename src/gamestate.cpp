@@ -1,5 +1,6 @@
 #include "gamestate.h"
 #include "paddle.h"
+#include "engine.h"
 
 gamestate::gamestate() {
     //Initializes object textures
@@ -19,15 +20,14 @@ gamestate::gamestate() {
     //Initializes object starting position
     //TODO:  (refactor to be dynamic)
     player.setPosition(0.0f, 300.0f - 42.0f);
-    cpuPlayer.setPosition(800.0f - 15.0f, 300.0f - 42.0f);
+    cpuPlayer.setPosition(engine::xRes- 15.0f, 300.0f - 42.0f);
     pongBall.setPosition(400.0f - 7.0f, 300.0f - 7.0f);
 
     //Initializes object boundaries
-    //TODO:  (refactor to be dynamic)
-    topBoundary = std::make_pair(sf::Vector2f(-1,-100), sf::Vector2f(800, 100));
-    bottomBoundary = std::make_pair(sf::Vector2f(-1,600), sf::Vector2f(800,200));
-    rightBoundary = std::make_pair(sf::Vector2f(800, -1), sf::Vector2f(400, 600));
-    leftBoundary = std::make_pair(sf::Vector2f(800, -100), sf::Vector2f(10, 100));
+    topBoundary = std::make_pair(sf::Vector2f(-1,-100), sf::Vector2f(engine::xRes, 100));
+    bottomBoundary = std::make_pair(sf::Vector2f(-1,600), sf::Vector2f(engine::xRes,200));
+    rightBoundary = std::make_pair(sf::Vector2f(engine::xRes, -1), sf::Vector2f(400, 600));
+    leftBoundary = std::make_pair(sf::Vector2f(engine::xRes, -100), sf::Vector2f(10, 100));
 
     playerPaddleBoundary = player.getBoundary();
     cpuPlayerPaddleBoundary = cpuPlayer.getBoundary();
@@ -57,8 +57,6 @@ void gamestate::render(sf::RenderWindow* window) {
 
 
 int gamestate::handleEvents(sf::Event event) {
-    int currentState = 0;
-
     //Handles events when a key is pressed
     if (event.type == sf::Event::KeyPressed) {
         if (event.key.code == sf::Keyboard::Up) {player.up = true;}
@@ -66,7 +64,7 @@ int gamestate::handleEvents(sf::Event event) {
 
         //Changes the current state of the game to the pause state
         if (event.key.code == sf::Keyboard::Escape) {
-            currentState = 1;
+            return engine::PAUSESTATEID;
         }
     }
     //Handles events when a key is released
@@ -75,7 +73,7 @@ int gamestate::handleEvents(sf::Event event) {
         else if (event.key.code == sf::Keyboard::Down) {player.down = false;}
     }
 
-    return currentState;
+    return engine::GAMESTATEID;
 }
 
 void gamestate::update() {
