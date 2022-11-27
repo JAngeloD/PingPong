@@ -1,10 +1,14 @@
 #ifndef GAMESTATE_H
 #define GAMESTATE_H
 
-#include <math.h>
 #include "state.h"
 #include "paddle.h"
 #include "ball.h"
+
+#include <math.h>
+#include <string>
+#include <chrono>
+#include <thread>
 
 class gamestate : public state
 {
@@ -18,10 +22,18 @@ class gamestate : public state
     private:
         void update() override;
 
+        //Game Arena
+        sf::RectangleShape midLine;
+        sf::Font font;
+        sf::Text cpuScore;
+        sf::Text playerScore;
+
+        //Game objects
         paddle cpuPlayer;
         paddle player;
         ball pongBall;
 
+        //Boundaries
         std::pair<sf::Vector2f, sf::Vector2f> topBoundary;
         std::pair<sf::Vector2f, sf::Vector2f> bottomBoundary;
         std::pair<sf::Vector2f, sf::Vector2f> rightBoundary;
