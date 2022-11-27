@@ -415,18 +415,17 @@
 	<SFML/Graphics/Drawable.hpp>
 	<SFML/Window/GlResource.hpp>
 
-1668999986 d:\programming\pingpong\include\engine.h
+1669511856 d:\programming\pingpong\include\engine.h
 	<SFML/Graphics.hpp>
 	"state.h"
 	"gamestate.h"
-	"menustate.h"
 	"pausestate.h"
 
-1668977732 d:\programming\pingpong\include\state.h
+1669511773 d:\programming\pingpong\include\state.h
 	<SFML/Graphics.hpp>
 	<iostream>
 
-1669435351 d:\programming\pingpong\include\gamestate.h
+1669511090 d:\programming\pingpong\include\gamestate.h
 	<math.h>
 	"state.h"
 	"paddle.h"
@@ -435,14 +434,14 @@
 1668400871 d:\programming\pingpong\include\menustate.h
 	"state.h"
 
-1668400871 d:\programming\pingpong\include\pausestate.h
+1669511864 d:\programming\pingpong\include\pausestate.h
 	"state.h"
 
-1669434566 source:d:\programming\pingpong\src\gamestate.cpp
+1669511464 source:d:\programming\pingpong\src\gamestate.cpp
 	"gamestate.h"
 	"paddle.h"
 
-1668977746 source:d:\programming\pingpong\src\state.cpp
+1669511883 source:d:\programming\pingpong\src\state.cpp
 	"state.h"
 
 1668400871 source:d:\programming\pingpong\src\menustate.cpp
@@ -451,7 +450,7 @@
 1668996715 source:d:\programming\pingpong\src\engine.cpp
 	"engine.h"
 
-1668400877 source:d:\programming\pingpong\src\pausestate.cpp
+1669511871 source:d:\programming\pingpong\src\pausestate.cpp
 	"pausestate.h"
 
 1669433778 source:d:\programming\pingpong\src\paddle.cpp

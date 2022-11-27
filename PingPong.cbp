@@ -32,7 +32,6 @@
 		<Unit filename="include/engine.h" />
 		<Unit filename="include/gamestate.h" />
 		<Unit filename="include/main.h" />
-		<Unit filename="include/menustate.h" />
 		<Unit filename="include/object.h" />
 		<Unit filename="include/paddle.h" />
 		<Unit filename="include/pausestate.h" />
@@ -41,7 +40,6 @@
 		<Unit filename="src/engine.cpp" />
 		<Unit filename="src/gamestate.cpp" />
 		<Unit filename="src/main.cpp" />
-		<Unit filename="src/menustate.cpp" />
 		<Unit filename="src/object.cpp" />
 		<Unit filename="src/paddle.cpp" />
 		<Unit filename="src/pausestate.cpp" />

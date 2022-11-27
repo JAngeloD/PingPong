@@ -5,7 +5,6 @@
 
 #include "state.h"
 #include "gamestate.h"
-#include "menustate.h"
 #include "pausestate.h"
 
 class engine
@@ -24,7 +23,6 @@ class engine
 
         //States of the game
         gamestate game;
-        menustate menu;
         pausestate pause;
 
         sf::Vector2f res;

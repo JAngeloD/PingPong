@@ -13,7 +13,7 @@ class gamestate : public state
         virtual ~gamestate();
 
         void render(sf::RenderWindow* window) override;
-        void handleEvents(sf::Event event) override;
+        int handleEvents(sf::Event event) override;
 
     private:
         void update() override;

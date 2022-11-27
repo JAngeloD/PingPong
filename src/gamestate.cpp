@@ -55,21 +55,27 @@ void gamestate::render(sf::RenderWindow* window) {
     window->draw(*pongBall.getSprite());
 }
 
-void gamestate::handleEvents(sf::Event event) {
+
+int gamestate::handleEvents(sf::Event event) {
+    int currentState = 0;
+
     //Handles events when a key is pressed
     if (event.type == sf::Event::KeyPressed) {
         if (event.key.code == sf::Keyboard::Up) {player.up = true;}
         else if (event.key.code == sf::Keyboard::Down) {player.down = true;}
+
+        //Changes the current state of the game to the pause state
+        if (event.key.code == sf::Keyboard::Escape) {
+            currentState = 1;
+        }
     }
     //Handles events when a key is released
     else if (event.type == sf::Event::KeyReleased) {
         if (event.key.code == sf::Keyboard::Up) {player.up = false;}
         else if (event.key.code == sf::Keyboard::Down) {player.down = false;}
     }
-    //Handles events when the mouse left click is pressed
-    else if (event.type == sf::Event::MouseButtonPressed) {
 
-    }
+    return currentState;
 }
 
 void gamestate::update() {
@@ -88,10 +94,6 @@ void gamestate::update() {
     //cpu paddle movement updates
     //TODO:  super basic movement for testing purposes
     float cpuVelocity = pongBall.getYVelocity();
-    if (pongBall.getYPosition() &&
-        ) {
-
-    }
     if(pongBall.getXVelocity() >= 0) {cpuPlayer.setVelocity(0.0f, cpuVelocity);}
     cpuPlayerPaddleBoundary = cpuPlayer.getBoundary();
 

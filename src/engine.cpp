@@ -20,8 +20,18 @@ void engine::render() {
         while (window->pollEvent(event))
         {
             if (event.type == sf::Event::Closed) {window->close();}
-            currentState->handleEvents(event);
+
+            int stateChange = currentState->handleEvents(event);
+            switch (stateChange) {
+                case 1:
+                    currentState = &pause;
+                    break;
+                case 0:
+                    currentState = &game;
+                    break;
+            }
         }
+
         window->clear();
         currentState->render(window);
         window->display();

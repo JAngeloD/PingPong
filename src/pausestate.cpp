@@ -17,7 +17,7 @@ void pausestate::render(sf::RenderWindow* window) {
 
 }
 
-void pausestate::handleEvents(sf::Event event) {
+int pausestate::handleEvents(sf::Event event) {
 
 }
 

@@ -10,7 +10,7 @@ class state
         virtual ~state();
 
         virtual void render(sf::RenderWindow* window);
-        virtual void handleEvents(sf::Event event);
+        virtual int handleEvents(sf::Event event);
         virtual void update();
 };
 
