@@ -33,6 +33,10 @@ void engine::render() {
                 case engine::GAMESTATEID:
                     currentState = &game;
                     break;
+                case engine::RESTARTID:
+                    game = gamestate();
+                    currentState = &game;
+                    break;
             }
         }
 

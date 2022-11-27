@@ -2,26 +2,39 @@
 #include "engine.h"
 
 pausestate::pausestate() {
+    //Initializes the font to be used
     if(!font.loadFromFile("res\\Play-Bold.ttf")) {
         std::cout << "initializing pause state caused an error" << std::endl;
     }
-    text.setFont(font);
-    text.setCharacterSize(42);
-    text.setFillColor(sf::Color::White);
 
-    text.setString("Press space to continue");
+    //Creates the continue text
+    continueText.setFont(font);
+    continueText.setCharacterSize(42);
+    continueText.setFillColor(sf::Color::White);
 
-    int xOffset = (text.getCharacterSize() * text.getString().getSize()) / 4;
-    int yOffset = (text.getCharacterSize());
-    text.move((engine::xRes / 2) - xOffset, (engine::yRes / 2) - yOffset);
+    continueText.setString("Press 'SPACE' to continue");
 
-    std:: cout << text.getPosition().y << std::endl;
+    int xOffset = (continueText.getCharacterSize() * continueText.getString().getSize()) / 4;
+    int yOffset = (continueText.getCharacterSize() * 2);
+    continueText.move((engine::xRes / 2) - xOffset, (engine::yRes / 2) - yOffset);
+
+    //Creates the restart continueText
+    restartText.setFont(font);
+    restartText.setCharacterSize(42);
+    restartText.setFillColor(sf::Color::White);
+
+    restartText.setString("Press 'R' to restart game");
+
+    xOffset = (restartText.getCharacterSize() * restartText.getString().getSize()) / 4;
+    restartText.move((engine::xRes / 2) - xOffset, engine::yRes / 2);
+
 }
 
 pausestate::~pausestate() {}
 
 void pausestate::render(sf::RenderWindow* window) {
-    window->draw(text);
+    window->draw(restartText);
+    window->draw(continueText);
 }
 
 int pausestate::handleEvents(sf::Event event) {
@@ -30,6 +43,9 @@ int pausestate::handleEvents(sf::Event event) {
         // "Unpauses" the game by switching to the gamestate
         if (event.key.code == sf::Keyboard::Space) {
             return engine::GAMESTATEID;
+        }
+        if (event.key.code == sf::Keyboard::R) {
+            return engine::RESTARTID;
         }
     }
     //Handles events when a key is released

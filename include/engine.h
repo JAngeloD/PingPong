@@ -23,6 +23,7 @@ class engine
         static constexpr int GAMESTATEID = 0;
         static constexpr int PAUSESTATEID = 1;
         static constexpr int STARTSTATEID = 2;
+        static constexpr int RESTARTID = 3;
         static const int xRes = 800;
         static const int yRes = 600;
     private:

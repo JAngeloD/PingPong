@@ -15,7 +15,8 @@ class pausestate : public state
 
     private:
         sf::Font font;
-        sf::Text text;
+        sf::Text continueText;
+        sf::Text restartText;
 };
 
 #endif // PAUSESTATE_H

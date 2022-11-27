@@ -15,7 +15,6 @@ startstate::startstate() {
     int yOffset = (text.getCharacterSize());
     text.move((engine::xRes / 2) - xOffset, (engine::yRes / 2) - yOffset);
 
-    std:: cout << text.getPosition().y << std::endl;
 }
 
 startstate::~startstate() {}

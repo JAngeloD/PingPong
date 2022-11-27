@@ -415,7 +415,7 @@
 	<SFML/Graphics/Drawable.hpp>
 	<SFML/Window/GlResource.hpp>
 
-1669518182 d:\programming\pingpong\include\engine.h
+1669520724 d:\programming\pingpong\include\engine.h
 	<SFML/Graphics.hpp>
 	"state.h"
 	"startstate.h"
@@ -435,10 +435,10 @@
 1668400871 d:\programming\pingpong\include\menustate.h
 	"state.h"
 
-1669517365 d:\programming\pingpong\include\pausestate.h
+1669520386 d:\programming\pingpong\include\pausestate.h
 	"state.h"
 
-1669518206 source:d:\programming\pingpong\src\gamestate.cpp
+1669578477 source:d:\programming\pingpong\src\gamestate.cpp
 	"gamestate.h"
 	"paddle.h"
 	"engine.h"
@@ -449,10 +449,10 @@
 1668400871 source:d:\programming\pingpong\src\menustate.cpp
 	"menustate.h"
 
-1669517768 source:d:\programming\pingpong\src\engine.cpp
+1669521177 source:d:\programming\pingpong\src\engine.cpp
 	"engine.h"
 
-1669519724 source:d:\programming\pingpong\src\pausestate.cpp
+1669520730 source:d:\programming\pingpong\src\pausestate.cpp
 	"pausestate.h"
 	"engine.h"
 
@@ -470,14 +470,14 @@
 1668972963 source:d:\programming\pingpong\src\object.cpp
 	"object.h"
 
-1669433752 source:d:\programming\pingpong\src\ball.cpp
+1669521313 source:d:\programming\pingpong\src\ball.cpp
 	"ball.h"
 
 1669433174 d:\programming\pingpong\include\ball.h
 	"object.h"
 	<algorithm>
 
-1669519674 source:d:\programming\pingpong\src\startstate.cpp
+1669520395 source:d:\programming\pingpong\src\startstate.cpp
 	"startstate.h"
 	"engine.h"
 

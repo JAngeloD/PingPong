@@ -89,10 +89,15 @@ void gamestate::update() {
         playerPaddleBoundary = player.getBoundary();
     }
 
-    //cpu paddle movement updates
-    //TODO:  super basic movement for testing purposes
-    float cpuVelocity = pongBall.getYVelocity();
-    if(pongBall.getXVelocity() >= 0) {cpuPlayer.setVelocity(0.0f, cpuVelocity);}
+    //cpu paddle movement updates (impossible to beat, need to refactor)
+    float finalCpuVelocity = pongBall.getYVelocity();
+    if(pongBall.getYVelocity() < 0 && cpuPlayer.getYPosition() < pongBall.getYPosition()) {
+        finalCpuVelocity = 0;
+    }
+    else if (pongBall.getYVelocity() > 0 && cpuPlayer.getYPosition() > pongBall.getYPosition()) {
+        finalCpuVelocity = 0;
+    }
+    if(pongBall.getXVelocity() >= 0) {cpuPlayer.setVelocity(0.0f, finalCpuVelocity);}
     cpuPlayerPaddleBoundary = cpuPlayer.getBoundary();
 
 
