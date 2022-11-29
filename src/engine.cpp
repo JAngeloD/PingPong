@@ -7,6 +7,7 @@ engine::engine() {
     window->setVerticalSyncEnabled(true);
 
     currentState = &start;
+
 }
 
 engine::~engine() {window->close();}
@@ -24,6 +25,8 @@ void engine::render() {
             // Gets the ID returned from handle events to listen to any requests for changing states
             int stateChange = currentState->handleEvents(event);
             switch (stateChange) {
+                case engine::NOCHANGEID:
+                    break;
                 case engine::STARTSTATEID:
                     currentState = &start;
                     break;
@@ -34,7 +37,7 @@ void engine::render() {
                     currentState = &game;
                     break;
                 case engine::RESTARTID:
-                    game = gamestate();
+                    game.initStart();
                     currentState = &game;
                     break;
             }

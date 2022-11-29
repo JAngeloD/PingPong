@@ -21,25 +21,18 @@ gamestate::gamestate() {
     midLine.setSize(sf::Vector2f(2, engine::yRes));
     midLine.setPosition(engine::xRes / 2, 0);
 
-    //Initializes the score for each player
+    //Initializes the score for the cpu and the player
     if(!font.loadFromFile("res\\Play-Bold.ttf")) {
         std::cout << "Game state font was not loaded" << std::endl;
     }
     cpuScore.setFont(font);
-    cpuScore.setString("0");
     cpuScore.setCharacterSize(32);
+    cpuScore.setFillColor(sf::Color::White);
     cpuScore.setPosition(engine::xRes * 0.9, 0);
-
     playerScore.setFont(font);
-    playerScore.setString("0");
     playerScore.setCharacterSize(32);
+    playerScore.setFillColor(sf::Color::White);
     playerScore.setPosition(engine::xRes * 0.1, 0);
-
-    //Initializes object starting position
-    //TODO:  (refactor to be dynamic)
-    player.setPosition(0.0f, 300.0f - 42.0f);
-    cpuPlayer.setPosition(engine::xRes- 15.0f, 300.0f - 42.0f);
-    pongBall.setPosition(400.0f - 7.0f, 300.0f - 7.0f);
 
     //Initializes object boundaries
     topBoundary = std::make_pair(sf::Vector2f(-1,-100), sf::Vector2f(engine::xRes, 100));
@@ -59,16 +52,30 @@ gamestate::gamestate() {
     cpuPlayer.setBoundary(&cpuBoundaries);
     pongBall.setBoundary(&ballBoundaries);
 
-    //Initializes starting velocity of the pong ball
-    pongBall.startVelocity();
+    //Makes all objects in the game default to their starting point/state.
+    initStart();
 }
 
 gamestate::~gamestate() {}
 
+void gamestate::initStart() {
+    //Sets scores initial state: 0
+    cpuScore.setString("0");
+    playerScore.setString("0");
+
+    //Initializes object starting position
+    player.setPlayerReset();
+    cpuPlayer.setCPUReset();
+    pongBall.resetPosition();
+
+    pongBall.startVelocity();
+}
 
 void gamestate::render(sf::RenderWindow* window) {
+    //Updates positions and velocity of objects
     update();
 
+    //Draws everything in order
     window->draw(*player.getSprite());
     window->draw(*cpuPlayer.getSprite());
     window->draw(*pongBall.getSprite());
@@ -76,7 +83,6 @@ void gamestate::render(sf::RenderWindow* window) {
     window->draw(cpuScore);
     window->draw(playerScore);
 }
-
 
 int gamestate::handleEvents(sf::Event event) {
     //Handles events when a key is pressed
@@ -95,12 +101,11 @@ int gamestate::handleEvents(sf::Event event) {
         else if (event.key.code == sf::Keyboard::Down) {player.down = false;}
     }
 
-    return engine::GAMESTATEID;
+    return engine::NOCHANGEID;
 }
 
 void gamestate::update() {
     //player paddle movement updates
-    //TODO:  (refactor to be dynamic)
     player.setVelocity(0.0f, 0.0f);
     if (player.up) {
         player.setVelocity(0.0f, -2.0f);
@@ -140,14 +145,18 @@ void gamestate::update() {
     if (pongBall.getXPosition() + pongBall.getWidth() < 0) {
         nextScore = std::stoi(cpuScore.getString().toAnsiString()) + 1;
         cpuScore.setString(std::to_string(nextScore));
-        std::this_thread::sleep_for(std::chrono::seconds(0.5));
-        pongBall.setPosition(400.0f - 7.0f, 300.0f - 7.0f);
+        player.setPlayerReset();
+        cpuPlayer.setCPUReset();
+        pongBall.resetPosition();
+        std::this_thread::sleep_for(std::chrono::seconds(1));
     }
     if (pongBall.getXPosition() + pongBall.getWidth() > engine::xRes) {
         nextScore = std::stoi(playerScore.getString().toAnsiString()) + 1;
         playerScore.setString(std::to_string(nextScore));
-        std::this_thread::sleep_for(std::chrono::seconds(0.5));
-        pongBall.setPosition(400.0f - 7.0f, 300.0f - 7.0f);
+        pongBall.resetPosition();
+        player.setPlayerReset();
+        cpuPlayer.setCPUReset();
+        std::this_thread::sleep_for(std::chrono::seconds(1));
     }
 }
 

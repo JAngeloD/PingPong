@@ -27,7 +27,6 @@ pausestate::pausestate() {
 
     xOffset = (restartText.getCharacterSize() * restartText.getString().getSize()) / 4;
     restartText.move((engine::xRes / 2) - xOffset, engine::yRes / 2);
-
 }
 
 pausestate::~pausestate() {}
@@ -52,5 +51,5 @@ int pausestate::handleEvents(sf::Event event) {
     else if (event.type == sf::Event::KeyReleased) {
     }
 
-    return engine::PAUSESTATEID;
+    return engine::NOCHANGEID;
 }

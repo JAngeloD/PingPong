@@ -32,5 +32,5 @@ int startstate::handleEvents(sf::Event event) {
     else if (event.type == sf::Event::KeyReleased) {
     }
 
-    return engine::STARTSTATEID;
+    return engine::NOCHANGEID;
 }

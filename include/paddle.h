@@ -9,6 +9,9 @@ class paddle : public object
         paddle();
         virtual ~paddle();
 
+        void setPlayerReset();
+        void setCPUReset();
+
     private:
 };
 

@@ -18,6 +18,7 @@ class gamestate : public state
 
         void render(sf::RenderWindow* window) override;
         int handleEvents(sf::Event event) override;
+        void initStart();
 
     private:
         void update() override;
